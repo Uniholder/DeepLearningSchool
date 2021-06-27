@@ -88,7 +88,7 @@ def dress(smpl_tgt, body_src, garment, vert_inds, garment_tex = None, dpghsmd = 
 
     return ret_posed_interp
 
-path = '../../Multi-Garment_dataset/'
+path = 'Multi-Garment_dataset/'
 all_scans = glob(path + '*')
 garment_classes = ['Pants', 'ShortPants', 'ShirtNoCoat', 'TShirtNoCoat', 'LongCoat']
 gar_dict = {}
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     smpl = Smpl(dp.get_hres_smpl_model_data())
 
     ## This file contains correspondances between garment vertices and smpl body
-    fts_file = 'assets/garment_fts.pkl'
+    fts_file = 'MultiGarmentNetwork/assets/garment_fts.pkl'
     vert_indices, fts = pkl.load(open(fts_file, 'rb') , encoding='latin1')
     fts['naked'] = ft
 
@@ -120,31 +120,7 @@ if __name__ == '__main__':
     garment_tex = join(path, 'multi_tex.jpg')
 
     ## Generate random SMPL body (Feel free to set up ur own smpl) as target subject
-    #smpl.pose[:] = np.random.randn(72) *0.05
-    smpl.pose[:] = [ 2.91917896e+00,  4.58017327e-02,  1.53551832e-01, 
-        -9.22530651e-01,  8.30429792e-02,  3.82127285e-01,
-        -8.67569566e-01, -9.41842701e-03, -3.08711380e-01,
-         5.51593065e-01, -2.62972210e-02,  1.17724165e-02,
-         1.55291820e+00,  9.38382372e-02, -2.03269675e-01,
-         1.60624826e+00, -1.72855295e-02,  1.70969218e-01,
-        -5.60724996e-02, -2.51412056e-02, -6.79262029e-03,
-        -1.70694739e-01,  7.73771927e-02, -6.54179528e-02,
-        -2.13481039e-01, -2.78314129e-02, -1.45036180e-03,
-        -3.69013101e-02, -1.13427769e-02, -8.66152346e-03,
-        -2.59527802e-01,  6.41327873e-02,  1.68739066e-01,
-        -2.42282629e-01, -1.39641911e-01, -1.29240543e-01,
-        -3.32024634e-01, -9.92928073e-02, -7.45689273e-02,
-         5.03234453e-02, -2.15491727e-01, -3.47436190e-01,
-         3.79543081e-02,  1.83946118e-01,  3.41378152e-01,
-        -4.32795621e-02, -8.62272084e-02,  1.32593354e-02,
-         9.13528800e-02, -3.66373211e-01, -8.13994765e-01,
-         8.22413862e-02,  2.69980103e-01,  8.60714853e-01,
-         2.12322161e-01, -9.02887702e-01,  2.42460236e-01,
-         1.48995027e-01,  7.73568034e-01, -1.55371800e-01,
-         2.44113714e-01, -3.91888991e-02,  2.08952576e-01,
-         1.52510270e-01,  3.13121825e-02, -1.60491675e-01,
-        -2.35091552e-01, -1.13584720e-01, -2.44322896e-01,
-        -2.06727579e-01,  1.06525600e-01,  2.20032185e-01]
+    smpl.pose[:] = np.random.randn(72) *0.05
     smpl.betas[:] = np.random.randn(10) *0.01
     smpl.trans[:] = 0
     tgt_body = Mesh(smpl.r, smpl.f)
@@ -154,16 +130,9 @@ if __name__ == '__main__':
 
     new_garment = dress(smpl, garment_org_body_unposed, garment_unposed, vert_inds, garment_tex)
 
-    mvs = MeshViewers((1, 1))
-    mvs[0][0].set_static_meshes([garment_unposed]); mvs[0][0].save_snapshot('garment_unposed.png', blocking=True)
-    mvs = MeshViewers((1, 1))
-    mvs[0][0].set_static_meshes([new_garment]); mvs[0][0].save_snapshot('new_garment.png', blocking=True)
-    mvs = MeshViewers((1, 1))
-    mvs[0][0].set_static_meshes([tgt_body]); mvs[0][0].save_snapshot('tgt_body.png', blocking=True)
-    mvs = MeshViewers((1, 1))
-    mvs[0][0].set_static_meshes([garment_org_body_unposed]); mvs[0][0].save_snapshot('garment_org_body_unposed.png', blocking=True)
-    mvs = MeshViewers((1, 1))
-    mvs[0][0].set_static_meshes([new_garment, tgt_body]); mvs[0][0].save_snapshot('new_garment_tgt_body.png', blocking=True)
+    mvs = MeshViewers((1, 2))
+    mvs[0][0].set_static_meshes([garment_unposed])
+    mvs[0][1].set_static_meshes([new_garment, tgt_body])
 
     print('Done')
 

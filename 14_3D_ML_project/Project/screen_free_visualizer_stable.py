@@ -53,44 +53,22 @@ class Visualizer(object):
                 mesh_color=colors['light_purple'])
 
 
-    def __render_pred_verts(self, img_original, pred_mesh_list_body, pred_mesh_list_garment, texture_rgb):
+    def __render_pred_verts(self, img_original, pred_mesh_list, texture_rgb):
         assert max(img_original.shape) <= self.input_size, \
             f"Currently, we donlt support images size larger than:{self.input_size}"
-        
-        mesh_body = pred_mesh_list_body[0]
-        mesh_garment = pred_mesh_list_garment[0]
-
-        pred_mesh_list = [mesh_body, mesh_garment]
 
         res_img = img_original.copy()
         rend_img = np.ones((self.input_size, self.input_size, 3))
-        mask = np.ones((self.input_size, self.input_size, 3))
         h, w = img_original.shape[:2]
         rend_img[:h, :w, :] = img_original
-        mask[:h, :w, :] = img_original
 
-        verts_body = mesh_body['vertices']
-        faces_body = mesh_body['faces']
-        verts_garment = mesh_garment['vertices']
-        faces_garment = mesh_garment['faces']
-
-        rend_img = self.renderer.render(verts_body, faces_body, verts_garment, faces_garment, rend_img, texture_rgb)
-        
-        #self.renderer = Pytorch3dRenderer(
-        #    img_size=self.input_size, 
-        #    mesh_color=colors['light_gray'],
-        #    ambient=True)
-        #mask = self.renderer.render(verts_garment, faces_garment, rend_img)
-
-        #self.renderer = Pytorch3dRenderer(
-        #    img_size=self.input_size, 
-        #    mesh_color=colors['light_purple'],
-        #    ambient=True)
-        #mask = self.renderer.render(verts_body, faces_body, mask)
+        for mesh in pred_mesh_list:
+            verts = mesh['vertices']
+            faces = mesh['faces']
+            rend_img, mesh = self.renderer.render(verts, faces, rend_img, texture_rgb)
 
         res_img = rend_img[:h, :w, :]
-        #res_img = mask[:h, :w, :]
-        return res_img
+        return res_img,  mesh
 
 
     def visualize(self, 
@@ -99,12 +77,11 @@ class Visualizer(object):
         body_bbox_list = None,
         body_pose_list = None,
         raw_hand_bboxes = None,
-        pred_mesh_list_body = None,
-        pred_mesh_list_garment = None,
+        pred_mesh_list = None,
         vis_raw_hand_bbox = True,
         vis_body_pose = True,
         vis_hand_bbox = True,
-        texture_rgb = None,
+texture_rgb = None,
     ):
         # init
         res_img = input_img.copy()
@@ -128,9 +105,9 @@ class Visualizer(object):
             res_img = draw_hand_bbox(res_img, hand_bbox_list)
         
         # render predicted meshes
-        if (pred_mesh_list_body is not None) and (pred_mesh_list_garment is not None):
-            rend_img = self.__render_pred_verts(input_img, pred_mesh_list_body, pred_mesh_list_garment, texture_rgb)
+        if pred_mesh_list is not None:
+            rend_img, mesh = self.__render_pred_verts(input_img, pred_mesh_list, texture_rgb)
             res_img = np.concatenate((res_img, rend_img), axis=1)
             # res_img = rend_img
         
-        return res_img
+        return res_img, mesh

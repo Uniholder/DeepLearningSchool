@@ -60,7 +60,7 @@ class Visualizer(object):
         mesh_body = pred_mesh_list_body[0]
         mesh_garment = pred_mesh_list_garment[0]
 
-        pred_mesh_list = [mesh_body, mesh_garment]
+        pred_mesh_list = [mesh_body, mesh_color]
 
         res_img = img_original.copy()
         rend_img = np.ones((self.input_size, self.input_size, 3))
@@ -74,22 +74,21 @@ class Visualizer(object):
         verts_garment = mesh_garment['vertices']
         faces_garment = mesh_garment['faces']
 
-        rend_img = self.renderer.render(verts_body, faces_body, verts_garment, faces_garment, rend_img, texture_rgb)
-        
-        #self.renderer = Pytorch3dRenderer(
-        #    img_size=self.input_size, 
-        #    mesh_color=colors['light_gray'],
-        #    ambient=True)
-        #mask = self.renderer.render(verts_garment, faces_garment, rend_img)
+        rend_img = self.renderer.render(verts_garment, faces_garment, rend_img, texture_rgb)
 
-        #self.renderer = Pytorch3dRenderer(
-        #    img_size=self.input_size, 
-        #    mesh_color=colors['light_purple'],
-        #    ambient=True)
-        #mask = self.renderer.render(verts_body, faces_body, mask)
+        self.renderer = Pytorch3dRenderer(
+            img_size=self.input_size, 
+            mesh_color=colors['light_purple'],
+            ambient=True)
+        mask = self.renderer.render(verts_body, faces_body, mask)
+
+        self.renderer = Pytorch3dRenderer(
+            img_size=self.input_size, 
+            mesh_color=colors['light_gray'],
+            ambient=True)
+        mask = self.renderer.render(verts_garment, faces_garment, mask)
 
         res_img = rend_img[:h, :w, :]
-        #res_img = mask[:h, :w, :]
         return res_img
 
 

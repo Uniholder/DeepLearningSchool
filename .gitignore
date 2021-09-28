@@ -111,11 +111,11 @@ dmypy.json
 
 # large data files
 data/
-14_3D_ML_project/Multi-Garment_dataset
-14_3D_ML_project/Multi-Garment_dataset_02
-14_3D_ML_project/mesh
-14_3D_ML_project/dirt
-14_3D_ML_project/frankmocap/
+1_semester/14_3D_ML_project/Multi-Garment_dataset
+1_semester/14_3D_ML_project/Multi-Garment_dataset_02
+1_semester/14_3D_ML_project/mesh
+1_semester14_3D_ML_project/dirt
+1_semester/14_3D_ML_project/frankmocap/
 
 
 # other stuff

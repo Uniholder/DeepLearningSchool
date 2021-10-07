@@ -1,0 +1,63 @@
+findall
+DCG@   1: 0.285 | Hits@   1: 0.285
+DCG@   5: 0.342 | Hits@   5: 0.393
+DCG@  10: 0.360 | Hits@  10: 0.449
+DCG@ 100: 0.406 | Hits@ 100: 0.679
+DCG@ 500: 0.431 | Hits@ 500: 0.879
+DCG@1000: 0.444 | Hits@1000: 1.000
+
+findall+lower
+DCG@   1: 0.415 | Hits@   1: 0.415
+DCG@   5: 0.502 | Hits@   5: 0.582
+DCG@  10: 0.525 | Hits@  10: 0.651
+DCG@ 100: 0.570 | Hits@ 100: 0.874
+DCG@ 500: 0.583 | Hits@ 500: 0.973
+DCG@1000: 0.586 | Hits@1000: 1.000
+
+word_tokenize
+DCG@   1: 0.271 | Hits@   1: 0.271
+DCG@   5: 0.320 | Hits@   5: 0.365
+DCG@  10: 0.341 | Hits@  10: 0.429
+DCG@ 100: 0.390 | Hits@ 100: 0.673
+DCG@ 500: 0.416 | Hits@ 500: 0.874
+DCG@1000: 0.429 | Hits@1000: 1.000
+
+word_tokenize+lower
+DCG@   1: 0.399 | Hits@   1: 0.399
+DCG@   5: 0.487 | Hits@   5: 0.566
+DCG@  10: 0.509 | Hits@  10: 0.634
+DCG@ 100: 0.555 | Hits@ 100: 0.858
+DCG@ 500: 0.569 | Hits@ 500: 0.969
+DCG@1000: 0.573 | Hits@1000: 1.000
+
+wordpunct_tokenize+lower
+DCG@   1: 0.410 | Hits@   1: 0.410
+DCG@   5: 0.500 | Hits@   5: 0.580
+DCG@  10: 0.521 | Hits@  10: 0.645
+DCG@ 100: 0.568 | Hits@ 100: 0.875
+DCG@ 500: 0.581 | Hits@ 500: 0.973
+DCG@1000: 0.583 | Hits@1000: 1.000
+
+TreebankWordTokenizer+lower
+DCG@   1: 0.401 | Hits@   1: 0.401
+DCG@   5: 0.488 | Hits@   5: 0.566
+DCG@  10: 0.510 | Hits@  10: 0.635
+DCG@ 100: 0.556 | Hits@ 100: 0.859
+DCG@ 500: 0.570 | Hits@ 500: 0.969
+DCG@1000: 0.574 | Hits@1000: 1.000
+
+TweetTokenizer+lower
+DCG@   1: 0.411 | Hits@   1: 0.411
+DCG@   5: 0.498 | Hits@   5: 0.577
+DCG@  10: 0.517 | Hits@  10: 0.635
+DCG@ 100: 0.563 | Hits@ 100: 0.862
+DCG@ 500: 0.578 | Hits@ 500: 0.973
+DCG@1000: 0.581 | Hits@1000: 1.000
+
+split+lower
+DCG@   1: 0.346 | Hits@   1: 0.346
+DCG@   5: 0.432 | Hits@   5: 0.506
+DCG@  10: 0.454 | Hits@  10: 0.575
+DCG@ 100: 0.503 | Hits@ 100: 0.814
+DCG@ 500: 0.522 | Hits@ 500: 0.960
+DCG@1000: 0.526 | Hits@1000: 1.000

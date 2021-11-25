@@ -1,12 +1,8 @@
 # DeepLearningSchool
 
-## 1 semester
-
-1. [CNN](https://github.com/Uniholder/DeepLearningSchool/blob/main/1_semester/5_CNN/HW.ipynb)
-- MNIST
-- LeNet
+## Part I
     
-2. [Transfer learning](https://github.com/Uniholder/DeepLearningSchool/blob/main/1_semester/8_CNN_HW_Kaggle_Simpsons/simpsons_transfer_learning.ipynb)
+1. [Transfer learning](https://nbviewer.org/github/Uniholder/DeepLearningSchool/blob/main/1_semester/8_CNN_HW_Kaggle_Simpsons/simpsons_transfer_learning.ipynb)
 - task: img classification (Simpsons dataset)
 - architectures:
   - alexnet

@@ -64,7 +64,7 @@ Project tasks:
 https://user-images.githubusercontent.com/55554628/143505587-384f7cdd-b4f1-4096-9707-e968cbf6831c.mp4
 
 
-## 2 semester
+## Part II
 
 1. [Simple embeddings](http://nbviewer.ipython.org/urls/raw.github.com/Uniholder/DeepLearningSchool/main/2_semester/1_NLP/%5Bhomework%5Dsimple_embeddings.ipynb)
   - ranking task (Stackoverflow questions, cosine similarity)

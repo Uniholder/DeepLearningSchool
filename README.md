@@ -50,9 +50,10 @@ Mnist generating (VAE)<br>
 ![mnist generated](https://user-images.githubusercontent.com/55554628/143505926-31db242b-2181-4869-b5f6-927772b2c63e.png)
     
 4. [Generative adversarial networks](http://nbviewer.ipython.org/urls/raw.github.com/Uniholder/DeepLearningSchool/main/1_semester/13_GAN/%5Bhw%5Dgan.ipynb)
+
 ![gan](https://user-images.githubusercontent.com/55554628/143505934-cd9f0ce7-d635-4975-901f-5a8ab1cc325b.png)
 
-6. [Project 3D ML](https://nbviewer.org/github/Uniholder/DeepLearningSchool/blob/main/1_semester/14_3D_ML_project/Project/Project.ipynb)
+5. [Project 3D ML](https://nbviewer.org/github/Uniholder/DeepLearningSchool/blob/main/1_semester/14_3D_ML_project/Project/Project.ipynb)
 
 Project tasks:
   - find a person in a video
